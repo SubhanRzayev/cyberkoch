@@ -126,17 +126,7 @@ class CurriculumDetail(models.Model):
     
     
 
-class CourseStaff(models.Model):
-    course_duration = models.CharField(max_length=100,blank=True,null=True,default='24 Weeks')
-    teachers_count = models.CharField(max_length=100,blank=True,null=True,default='8')
-    max_students = models.CharField(max_length=100,blank=True,null=True,default='8')
-    skill_level = models.CharField(max_length=100,blank=True,null=True,default='All')
 
-    def __str__(self):
-        return str(self.course_duration)
-    
-    class Meta:
-        verbose_name_plural = 'Course_Staff'
     
 
 

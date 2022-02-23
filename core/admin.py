@@ -13,7 +13,7 @@ class RegisterAdmin(admin.ModelAdmin):
 
 @admin.register(Course)
 class Course(admin.ModelAdmin):
-    list_display = ['category',]
+    list_display = ['category','teachers_count','max_students','skill_level','cover_image']
 
 
 @admin.register(CategoryCourse)
@@ -59,10 +59,7 @@ class AboutImageInline(admin.TabularInline):
     model = Image
     extra = 1
     
-    
-@admin.register(CourseStaff)
-class CourseStaffAdmin(admin.ModelAdmin):
-    list_display = ['course_duration','teachers_count','max_students','skill_level']
+
 
     
 @admin.register(FaqQuestion)

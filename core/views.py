@@ -34,7 +34,6 @@ class CourseView(ListView):
             
         context['course_list'] = course
         context['logos_list'] = Logo.objects.all()
-        context['course_staff_list'] = CourseStaff.objects.all()
         
         return context
     
