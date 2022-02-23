@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    
+<main class="software curriculum-height">
+    <div class="my-container">
+        {% for a in curriculum_list %}
+            <div class="main-content">
+                <div class="main-text">
+                    {% for s in a.curriculum_head.all %}
+                    <p class="software-p">{{s.head|safe}}</p>
+                    {% endfor %}
+                    {% if a.count|default_if_none:"" %}
+                    <a href="{% url 'core:register' %}">
+                        <div class="join-button">
+                            Join course
+                        </div>
+                    </a>
+                    <div class="enrolled">
+                        
+                        <strong>{{a.count}}</strong> enrolled on this course
+                    </div>
+                    {% endif %}
+                </div>
+
+                <div class="main-img">
+                    {% for r in a.curric_images.all %}
+                    <img src="{{r.image.url}}" alt="">
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+
+
+        </div>
+    </main>
+
+    <section class="curriculum-section">
+        <div class="my-container">
+            <div class="curriculum">
+                
+                <ul class="accordion">
+                    {% for e in curriculum_list %}
+                    <li class="shadow-li">
+                        <a class="toggle" href="javascript:void(0);">
+                            <div class="accordion-content">
+                                <div class="left-side">
+                                    <h1>{{e.course_number}}</h1>
+                                    <h2>{{e.course_name}}</h2>
+                                </div>
+                                <div class="right-side">
+                                    <p>{{e.queastion}}</p>
+                                    <img class="icon-dropdown rotate-icon" src="{% static 'svg/arrow.svg' %}" alt="">
+                                </div>
+                            </div>
+                        </a>
+                        <ul class="inner">
+                            {% for f in e.curriculum_detail.all %}
+                            <p>{{f.detail}}</p>
+                            {% endfor %}
+                        </ul>
+                        
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+{% endblock content %}

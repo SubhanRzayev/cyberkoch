@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% load static %}
+
+    
+{% block content %}
+    {% for address in address_list %}
+    <section class="header">
+        <div class="my-container">
+            <div class="heading-title">
+               <h1>{{address.title}}</h1> 
+                <p>{{address.description}}</p>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="contact-us">
+        <div class="my-container">
+            <div class="contact-us-area">
+                
+                <div class="contact-text">
+                    <h1>Call us any time!</h1>
+                    <p class="phone-number">
+                        <a href="tel:+1(289)788-9196">
+                            {{address.phone}}
+                        </a>
+                    </p>
+                     <hr>
+
+                     <div class="e-address">
+                         <h4>OFFICE</h4>
+                         <p>
+                            <a href="mailto:office@cyberkoch.com"> 
+                                {{address.email}}
+                            </a> 
+                        </p>
+
+                     </div>
+
+                     <div class="e-address">
+                        <h4>SALES</h4>
+                        <p>
+                            <a href="mailto:sales@cyberkoch.com">
+                            {{address.sales}}
+                            </a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    {% include 'messages.html' %}
+                    <!-- successfully sent -->
+                    <!-- <div class="contact-sent">
+                        <p>Thanks you for your interest. We will contact you shortly</p>
+                    </div> -->
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <div class="name-surname">
+                            <label for="">
+                                <p>Name</p>
+                                {{form.name}}
+                            </label>
+
+                            <label for="">
+                                <p>Surname</p>
+                                {{form.surname}}
+                            </label>
+                        </div>
+
+                        <div class="phone">
+                            <label for="">
+                                <p>Phone Number</p>
+                                {{form.phone}}
+                            </label>
+                        </div>
+
+                        <div class="email1">
+                            <label for="">
+                                <p>Email</p>
+                                {{form.email}}
+                            </label>
+                        </div>
+
+                        <div class="textarea">
+                            <label for="">
+                                <p>Message</p>
+                                {{form.message}}
+                            </label>
+                        </div>
+
+                        <div class="b">
+                            <button type="submit" ><div class="submit">Submit</div></button>
+                        </div>
+
+                        
+ 
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endfor %}
+
+
+    <section class="address-map">
+        <div class="my-container">
+            <div class="map">
+                <div class="mapouter"><div class="gmap_canvas"><iframe width="100%" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=2880%20Broadway,%20New%20York&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://123movies-to.org"></a><br><style>.mapouter{position:relative;text-align:right;height:500px;width:1080px;}</style><a href="https://www.embedgooglemap.net"></a><style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:1080px;}</style></div></div>
+            </div>
+        </div>
+    </section>
+
+    
+
+
+{% endblock content %}
+
+
+
+    

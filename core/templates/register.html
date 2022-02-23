@@ -1,0 +1,338 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+
+    <title>Cyberkoch</title>
+</head>
+<body>
+    <nav>
+        <div class="my-container">
+            <div class="navbar">
+                <div class="logo">
+                   <a href="{% url 'core:index' %}"> <img src="{% static 'svg/logo.svg' %}" alt=""> </a> 
+                </div>  
+            </div>
+        </div>
+    </nav>
+
+
+
+    <section class="contact-us">
+        
+        <div class="my-container">
+            <div class="contact-us-area">
+                <div class="contact-text register">
+                    <h1>Start Your Application</h1>
+                    <p class="register-p">Submit your application to start the admissions process for your program!</p>
+                     
+                    <div class="checked">
+                        <img src="{% static 'img/Check.png' %}" alt="">
+                        <p>No skills or experience needed</p>
+                    </div>
+
+                    <div class="checked">
+                        <img src="{% static 'img/Check.png' %}" alt="">
+                        <p>No credit card required</p>
+                    </div>
+
+                    <div class="checked">
+                        <img src="{% static 'img/Check.png' %}" alt="">
+                        <p>From start to finish, this only takes 2 minutes!</p>
+                    </div>
+            
+                </div>
+
+                <div class="contact-form">
+                    <form >
+                        {% csrf_token %}
+                    <div id="step1">
+                        <div class="name-surname">
+                            <label for="">
+                                <p>Name</p>
+                                <input class="requiredS1" type="text" name="name" id="name" required>
+                            </label>
+
+                            <label for="">
+                                <p>Surname</p>
+                                <input class="requiredS1"  type="text" name="surname" id="surname" required>
+                            </label>
+                        </div>
+
+                        <div class="phone">
+                            <label for="">
+                                <p>Phone Number</p>
+                                <input  class="requiredS1"  type="tel" name="phone" id="phone" placeholder="   " required>
+                            </label>
+                        </div>
+
+                        <div class="email1">
+                            <label for="">
+                                <p>Email</p>
+                                <input class="requiredS1"  type="email" name="email" id="email" required>
+                            </label>
+                        </div>
+
+                        <div class="name-surname">
+                            <label for="">
+                                <p>State</p>
+                                <input  class="requiredS1"  class="name" type="text" name="state" id="state" required>
+                            </label>
+
+                            <label for="">
+                                <p>City</p>
+                                <input  class="requiredS1"  type="text" name="city" id="city" required>
+                            </label>
+                        </div>
+
+
+                            <div class="custom-select">
+                                <p>Any programming experience?</p>
+                                <select class="requiredS1" id="experience">
+                                  <option value=""></option>
+                                  <option value="HTML">HTML</option>
+                                  <option value="CSS">CSS</option>
+                                  <option value="JS">JS</option>
+                                  <option value="JAVA">JAVA</option>
+                                  <option value="DJANGO">DJANGO</option>
+                                  <option value="PYTHON">PYTHON</option>
+                                  <option value="C">C</option>
+                                  <option value="C#">C#</option>
+                                </select>
+                              </div>
+
+
+                        <div class="text-gray">
+                            <p>By submitting this form, you agree to receive admissions and marketing
+                                communications via email or automated text</p>
+                        </div>
+
+
+                        <div class="button-area">
+                            <button>
+                                <div id="continueBtn" class="continue">Continue</div>
+                            </button>
+                        </div>
+                    </div>
+                        <div id="step2" style="display: none">
+
+                            <div class="custom-select">
+                                <label for="">
+                                    <p>What is your highest level of education?</p>
+                                    <select id="highestEducation" class="requiredS2">
+                                        <option value=""></option>
+                                        <option value="No Degree">No Degree</option>
+                                        <option value="High School Diploma">High School Diploma</option>
+                                        <option value="Bachelor’s Degree">Bachelor’s Degree</option>
+                                        <option value="Master’s Degree">Master’s Degree</option>
+                                        <option value="PHD">PHD</option>
+                                    </select>
+                                </label>
+
+                            </div>
+
+
+                            <div class="email1">
+                                <label for="">
+                                    <p>Name of the Educational Institution</p>
+                                    <input class="requiredS2" type="text" name="education" id="education" required>
+                                </label>
+                            </div>
+
+                            <div class="email1">
+                                <label for="">
+                                    <p>Current profession</p>
+                                    <input class="requiredS2" type="text" name="profession" id="profession" required>
+                                </label>
+                            </div>
+
+                            <div class="name-surname">
+                                <label class="custom-select2 name">
+                                    <p> Current work schedule </p>
+                                    <select id="workSchedule" class="requiredS2">
+                                        <option value=""></option>
+                                        <option value="Employed Full Time">Employed Full Time</option>
+                                        <option value="Employed Part Time">Employed Part Time</option>
+                                        <option value="Not Employed">Not Employed</option>
+                                    </select>
+                                </label>
+
+                                <label for="">
+                                    <p>How did you hear about us?</p>
+                                    <input id="hearAbout" class="requiredS2" type="text" name="" required>
+                                </label>
+                            </div>
+
+                            <div class="text-gray">
+                                <p>By submitting this form, you agree to receive admissions and marketing
+                                    communications via email or automated text</p>
+                            </div>
+
+
+                            <div class="button-area">
+                                <button>
+                                    <div id="submitBtn" class="submit">Submit</div>
+                                </button>
+                            </div>
+
+                        </div>
+
+                    </form>
+                    
+                        
+                        
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <script>
+        const phoneInputField = document.querySelector("#phone");
+        const phoneInput = window.intlTelInput(phoneInputField, {
+          preferredCountries: ["us", "co", "in", "de"],
+          utilsScript:
+            "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+        });
+      </script>
+
+    <script src="{% static 'js/accordion.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+
+    <script>
+
+        $("#continueBtn").click(function (e) {
+            e.preventDefault();
+    
+            var continueIsValid = true;
+            $('.requiredS1').each(function () {
+                if( $(this).attr('id') == "email" )
+                {
+    
+                    if( ! $(this).val().includes('@') || ! $(this).val().includes('.')  )
+                    {
+                        continueIsValid = false;
+                        $(this).css("border", "1px solid red");
+                        return true;
+                    }
+                    else
+                    {
+                        $(this).css("border", "1px solid #A9A8A8");
+                        return true;
+                    }
+                }
+    
+                if( $(this).val().length < 1 )
+                {
+                    continueIsValid = false;
+                    $(this).css("border", "1px solid red");
+                }
+                else
+                {
+                    $(this).css("border", "1px solid #A9A8A8");
+                }
+    
+            });
+    
+            if( continueIsValid === true )
+            {
+                $("#step1").fadeOut(300);
+                $("#step2").fadeIn(300);
+            }
+        });
+    
+    
+        $("#submitBtn").click(async function (e) {
+            e.preventDefault();
+    
+            var submitIsValid = true;
+            $('.requiredS2').each(function () {
+    
+                if( $(this).val().length < 1 )
+                {
+                    submitIsValid = false;
+                    $(this).css("border", "1px solid red");
+                }
+                else
+                {
+                    $(this).css("border", "1px solid #A9A8A8");
+                }
+    
+            });
+    
+            if( submitIsValid )
+            {
+                var data = new FormData();
+                data.append('name', $("#name").val() );
+                data.append('surname', $("#surname").val() );
+                data.append('phone', phoneInput.getSelectedCountryData().dialCode + $("#phone").val() );
+                data.append('email', $("#email").val() );
+                data.append('state', $("#state").val() );
+                data.append('city', $("#city").val() );
+                data.append('experience', $("#experience option:selected" ).text() );
+    
+    
+                data.append('highestEducation', $("#highestEducation option:selected" ).text() );
+                data.append('education', $("#education").val() );
+                data.append('profession', $("#profession").val() );
+                data.append('workSchedule', $("#workSchedule option:selected" ).text() );
+                data.append('hearAbout', $("#hearAbout").val() );
+/*
+                res = await fetch('http://127.0.0.1:8000/register/',{
+                    method:'POST',
+                    data:data,
+                    headers:{
+                        "x-csrftoken":'{{ csrf_token }}'
+                    }
+                });
+                data  = await res.json()
+                */
+                
+    
+                $.ajax({
+                    url: 'http://127.0.0.1:8000/register/',
+                    beforeSend : function(jqXHR, settings) {
+                        jqXHR.setRequestHeader("x-csrftoken", '{{ csrf_token }}');
+                    },
+                    data: data,
+                    processData: false,
+                    method: 'POST',
+                    contentType: false,
+                    enctype: 'multipart/form-data',
+                    success: function ( qayidanData ) {
+                        if( qayidanData == "True"){
+                        $('.requiredS2, .requiredS1').each(function () {
+                              $(this).val('');      
+                        });
+                        $('#step2').hide();
+                        $('#step1').show();
+                        Swal.fire('You have successfully registered');
+                        
+                      }
+                    }
+
+                });
+    
+    
+            }
+        });
+    
+    
+    
+    </script>
+
+</body>
+
+</html>

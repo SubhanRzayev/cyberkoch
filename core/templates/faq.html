@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    
+<section class="header">
+    <div class="my-container">
+            {% for faq in faqquestion_list %}
+            <div class="heading-title">
+                {% for i in faq.faq_head.all %}
+                <p>{{i.head|safe}}</p>
+                {% endfor %}
+            </div>
+            {% endfor %}
+
+
+        </div>
+    </section>
+
+
+    <section class="faq faq-section">
+        <div class="my-container">
+            <div class="curriculum">
+
+                {% for faq in faqquestion_list %}
+                <ul class="accord-m accordion">
+                    <li class="shadow-li">
+                        <a class="toggle" href="javascript:void(0);">
+                            <div class="faq-content">
+
+                                <p>{{faq.question}}</p>
+                                <img class="icon-dropdown rotate-icon" src="{% static 'svg/arrow.svg' %}" alt=""> 
+                            </div>
+                        </a>
+                       
+                        <ul class="inner">
+                            {% for c in faq.question_answer.all %}
+                             <div class="faq-text">
+                                 {{c.answer}}
+                            </div>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                </ul>
+                {% endfor %}
+
+           </div>
+        </div>
+    </section>
+
+{% endblock content %}
+
+

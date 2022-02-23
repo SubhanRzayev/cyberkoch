@@ -1,0 +1,42 @@
+{% load static %}
+{% load custom_tags %}
+<nav>
+    <div class="my-container">
+        <div class="navbar navbar-content">
+            <div class="logo">
+               <a href="{% url 'core:index' %}"> <img src="{% static 'svg/logo.svg' %}" alt=""> </a> 
+            </div>
+
+                <div class="nav-bar navbar-content nav-menu-content">
+                    <ul class="dropdowstyle accordion">
+                        <li class="dropdown"> 
+                            <a class="toggle-nav" href="javascript:void(0);"> Courses <span> <img class="icon-dropdown rotate-icon" src="{% static 'svg/dropdown.svg' %}" alt=""></span></a> 
+                            {% header_category as context%}
+                            <ul class="dropdown-menu inner inner2" style="height:280px">
+                                {% for i in context %}
+                                <li><a href="/course?category={{i.id}}">{{i.category}}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        <li> <a href="{% url 'core:curriculum' %}">Curriculum</a> </li>
+                        <li> <a href="{% url 'core:faq' %}">Have a questions?</a></li>
+                        <li> <a href="{% url 'core:contact' %}">Contact</a> </li>
+                        <li> <a href="{% url 'core:about' %}">About</a> </li>
+                    </ul>
+                </div>
+
+               
+                <a href="{% url 'core:register' %}">
+                    <div class="register-button">Register</div>
+                </a>
+                <div class="hamburger-menu">
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                  </div>
+
+            
+        </div>
+    </div>
+</nav>
+

@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+{% for course in course_list %}   
+<main class="software category">
+    <div class="my-container">
+        <div class="main-content">
+            <div class="main-text">
+                
+
+                <p class="software-p">{{course.head|safe}}</p>
+
+                <a href="{% url 'core:register' %}">
+                    <div class="join-button">
+                        Join course
+                    </div>
+                </a>
+
+                <div class="enrolled"> <strong>{{course.course_count}}</strong>  enrolled on this course</div>
+            </div>
+
+            <div class="main-img">
+                <img src="{{course.cover_image.url}}" alt="">
+            </div>
+        </div>
+    </div>
+</main>
+
+
+
+<section class="graduates">
+    <div class="empty"></div>
+    <div class="my-container">
+       <div class="elements">
+            <div class="element-box">
+               <div class="element-img">
+                   <img src="{% static 'svg/clock.svg' %}" alt="">
+                   <p>Duration</p>
+               </div>
+               <div class="week twenty-four">{{course.duration}}</div>
+            </div>
+
+            <div class="line"></div>
+
+            <div class="element-box">
+                <div class="element-img">
+                    <img src="{% static 'svg/sunglass.svg' %}" alt="">
+                    <p>Teachers</p>
+                </div>
+                <div class="week eight">{{course.teachers_count}}</div>
+             </div>
+
+            <div class="line"></div>
+
+            <div class="element-box">
+                <div class="element-img">
+                    <img src="{% static 'svg/hat.svg' %}" alt="">
+                    <p>Max Students</p>
+                </div>
+                <div class="week hundred">{{course.max_students}}</div>
+             </div>
+
+            <div class="line"></div>
+
+            <div class="element-box">
+                <div class="element-img">
+                    <img src="{% static 'svg/checked.svg' %}" alt="">
+                    <p>Skill Level</p>
+                </div>
+                <div class="week all">{{course.skill_level}}</div>
+             </div>
+
+       </div>
+    </div>
+</section>
+
+<section class="overview-section">
+    <div class="my-container">
+        <div class="overview-text">
+            <h5>OVERVIEW</h5>
+            
+
+            <p>
+                {{course.description|safe}}
+            </p>
+           
+        </div>
+    </div>
+</section>
+
+<section class="outcomes-section">
+    <div class="my-container">
+        <div class="outcome">
+            <div class="percent">
+                <h1>90%</h1>
+                <p>placement within 180
+                   <br> days of graduation</p>
+            </div>
+
+            <div class="line2"></div>
+
+            <div class="outcome-text">
+                <h1>Outcomes you can trust</h1>
+                <p>Our placement statistics have been independently verified by an auditing firm.</p>
+            </div>
+        </div>
+
+        <div class="company-logos">
+            <div class="logos">
+                {% for logo in logos_list %}
+                <img src="{{logo.logos.url}}" alt="">
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="waiting-section">
+    <div class="my-container">
+        <div class="waiting">
+            <div class="image">
+                {% for i in course.courses_images.all %}
+                <img src="{{i.image.url}}" alt="">
+                {% endfor %}
+            </div>
+
+            <h1>What are you waiting for?</h1>
+            <p>Let’s get started.</p>
+
+            <a href="{% url 'core:register' %}"><div class="apply-button">Apply now</div></a>
+        </div>
+    </div>
+</section>
+
+{% endfor %}
+
+{% endblock content %}

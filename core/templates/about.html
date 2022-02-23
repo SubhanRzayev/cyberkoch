@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+    
+    {% for about in about_list %}
+    <section class="header">
+        <div class="my-container">
+            <div class="heading-title">
+                {% for s in about.about_head.all %}
+               <p>{{s.head|safe}}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section class="about">
+        <div class="my-container">
+            <div class="respected">
+                <div class="img-area">
+                    <img src="{{about.about_image.url}}" alt="">
+                </div>
+
+                <div class="text-area">
+                    <p>{{about.content1|safe}}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hire">
+        <div class="my-container">
+            <div class="hired-by">
+                <h1>CyberKoch Graduates Get
+                    Hired By:</h1>
+
+                    <div class="logos">
+                        {% for logo in logo_list %}
+                        <img src="{{logo.logos.url}}" alt="">
+                        {% endfor %}
+                    </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="about">
+        <div class="my-container">
+            <div class="respected">
+               
+
+                <div class="text-area">
+                    <p>{{about.content2|safe}}</p>
+                </div>
+
+                <div class="img-area">
+                    {% for a in about.about_images.all %}
+                    <img src="{{a.image.url}}" alt="">
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+    </section>
+    {% endfor %}
+
+
+{% endblock content %}
+
+    
+    

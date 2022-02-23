@@ -1,0 +1,50 @@
+{% load static %}
+{% load custom_tags %}
+<footer>
+    <div class="my-container">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <a href="{% url 'core:index' %}"><img src="{% static 'svg/logo-white.svg' %}" alt=""></a>    
+            </div>
+
+            <div class="footer-content">
+
+                <div class="footer-content-box">
+                    <h3>Company</h3>
+                    <p><a href="{% url 'core:about' %}">About</a></p>
+                    <p><a href="{% url 'core:curriculum' %}">Curriculum</a></p>
+                </div>
+
+                <div class="footer-content-box">
+                    {% header_category as context%}
+                    <h3>Courses</h3>
+                    {% for i in context %}
+                    <p><a href="/course?category={{i.id}}">{{i.category}}</a></p>
+                    {% endfor %}
+
+
+                </div>
+
+                <div class="footer-content-box">
+                    <h3>Follow Us</h3>
+                    <a href=""> <img src="{% static 'svg/instagram.svg' %}" alt=""> <p>Instagram</p> </a>
+                    <a href=""> <img src="{% static 'svg/twitter.svg' %}" alt=""> <p>Twitter</p> </a>
+                    <a href=""> <img src="{% static 'svg/fb.svg' %}" alt=""> <p>Facebook</p> </a>
+                </div>
+
+                <div class="footer-content-box">
+                    <h3>Need some help?</h3>
+                    <p><a href="{% url 'core:faq' %}">FAQs</a></p>
+                    <p><a href="{% url 'core:contact' %}">Contact</a></p>
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <div class="copyright">
+            Copyright © 2022 CyberKoch Academy. All rights reserved.
+        </div>
+    </div>
+</footer>

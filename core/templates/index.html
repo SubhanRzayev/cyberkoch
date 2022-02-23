@@ -1,0 +1,155 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    {% for main in main_list %}
+    <main>
+        <div class="my-container">
+            <div class="main-content">
+                <div class="main-text">
+                
+
+                    <p>{{main.description|safe}}</p>
+
+                    <a href="{% url 'core:register' %}">
+                        <div class="join-button">
+                            Join course
+                        </div>
+                    </a>
+                </div>
+
+                <div class="main-img">
+                    <img src="{{main.image.url}}" alt="">
+                </div>
+            </div>
+        </div>
+    </main>
+    {% endfor %}
+
+
+    <section class="graduates">
+        <div class="empty"></div>
+        <div class="my-container">
+            <div class="company-logos">
+                <div class="graduates-work-at">
+                    Graduates work at:
+                </div>
+
+                <div class="logos">
+                    {% for logo in logo_list %}
+                    <img src="{{logo.logos.url}}" alt="">
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-why-us">
+        <div class="my-container">
+            <div class="why-us">
+                <div class="why-us-title">
+                    Why CyberKoch Academy?
+                </div>
+    
+                <div class="reasons">
+                    {% for reason in reason_list %}
+                    <div class="reason-box">
+                        <div class="numbers">{{reason.numbers}}</div>
+                        <p>{{reason.description}}</p>
+                    </div>
+                    {% endfor %}
+
+                   
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+
+    <section class="contact-section">
+        <div class="my-container">
+            <div class="contact">
+                <h1>Our Admissions Representatives are
+                    ready to help</h1>
+
+                    <p>We'll work one-on-one to answer your questions.</p>
+                
+                <form action="" method="post" id="subscribe-form" name="subscribe-form">
+                    {% csrf_token %}
+                    <label for="">Your Email
+                        <input type="email" name="email" class"email" required >
+                    </label>
+                    <button type="submit" id="subscribe" >Contact Us</button>
+                    <ul id="error-list" style="list-style-type: none"></ul>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-slide">
+        <div class="my-container">
+            <div class="slider">
+                
+                <div class="slide-title">
+                    Why I chose CyberKoch Academy?
+                </div>
+                <div class="CSSgal">
+                    {% for a in comments_list %}
+                    {% if a.comment_count%}
+                    
+                    <s id="s{{a.comment_count}}"></s> 
+                    {% else %}
+                    <s></s>
+                    {% endif %}
+                    {% endfor %}
+                
+                    
+                    <div class="slider">
+                        {% for comment in comments_list %}
+                        <div class="slide-box" >
+                             <div class="slide-content">
+                                 <div class="quote">
+                                     <img src="{% static 'svg/dots.svg' %}" alt="">
+                                        <p>{{comment.description|safe}}</p>
+                                 </div>
+                                
+                                 <div class="author">
+                                     <div class="author-img">
+                                         <img src="{{comment.user_image.url}}" alt="">
+                                     </div>
+
+                                     <div class="author-name">
+                                         <h3>{{comment.full_name}}</h3>
+                                         <p>{{comment.position}}</p>
+                                     </div>
+                                 </div>
+                             </div>
+                        </div>
+                        {% endfor %}
+
+                        
+                     
+                    </div>
+                    <div class="bullets">
+                        {% for a in comments_list %}
+                        {% if a.comment_count %}
+                      <a href="#s{{a.comment_count}}"></a>
+                      {% else %}
+                      <a></a>
+
+                      {% endif %}
+                      {% endfor %}
+                    </div>
+                  
+                  </div>
+
+            </div>
+        </div>
+
+    </section>
+
+
+
+{% endblock content %}
+
+ 
