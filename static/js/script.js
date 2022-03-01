@@ -47,7 +47,7 @@ form.addEventListener('submit',async function (e) {
     let form_data = {
         'email': form.email.value
     }
-    let response = await fetch('http://cyberkoch.com/api/subscribe/',{
+    let response = await fetch('https://cyberkoch.com/api/subscribe/',{
         headers: {
             'content-type': 'application/json',
             "X-CSRFToken" : form.csrfmiddlewaretoken.value
