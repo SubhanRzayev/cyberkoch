@@ -289,20 +289,11 @@
                 data.append('profession', $("#profession").val() );
                 data.append('workSchedule', $("#workSchedule option:selected" ).text() );
                 data.append('hearAbout', $("#hearAbout").val() );
-/*
-                res = await fetch('http://127.0.0.1:8000/register/',{
-                    method:'POST',
-                    data:data,
-                    headers:{
-                        "x-csrftoken":'{{ csrf_token }}'
-                    }
-                });
-                data  = await res.json()
-                */
+
                 
     
                 $.ajax({
-                    url: 'http://127.0.0.1:8000/register/',
+                    url: 'https://cyberkoch.com/register/',
                     beforeSend : function(jqXHR, settings) {
                         jqXHR.setRequestHeader("x-csrftoken", '{{ csrf_token }}');
                     },
