@@ -100,9 +100,9 @@ WSGI_APPLICATION = 'cyberkoch.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'db_name',
-        'USER': 'db_user',
-        'PASSWORD': '12345',
+        'NAME': 'cyberkoch',
+        'USER': 'cyberkoch',
+        'PASSWORD': 'subhan1997',
         'HOST': 'localhost',
         'PORT': 5432
     }

@@ -1,9 +1,9 @@
 from django.urls import path
 
-from core.api.views import *
+from core.api.views import SubscribeAPIView
 
-app_name = 'email_api'
+app_name = 'subscribe'
 
 urlpatterns = [
-    path("email/", EmailAPIView.as_view(), name="email")
+    path("subscribe/", SubscribeAPIView.as_view(), name="subscribe")
 ]
