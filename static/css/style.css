@@ -1040,6 +1040,14 @@ form p {
     
 }
 
+.contact input {
+    width: 848px;
+    height: 60px;
+    border: 1px solid #A9A8A8;
+    border-radius: 5px;
+    padding-left: 20px !important;
+}
+
 .iti__selected-flag {
     background: #EFEFEF;
     border-radius: 5px 0px 0px 5px;
