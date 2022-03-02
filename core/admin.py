@@ -9,7 +9,7 @@ from core.models import *
 
 @admin.register(Register)
 class RegisterAdmin(admin.ModelAdmin):
-    list_display=['name',]
+    
 
 @admin.register(Course)
 class Course(admin.ModelAdmin):

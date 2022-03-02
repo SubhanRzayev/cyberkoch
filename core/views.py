@@ -69,15 +69,6 @@ class MainListView(ListView):
 class CurriculumListView(ListView):
     model = Curriculum
     template_name = 'curriculum.html'
-    
-    
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        return context
-    
-
-
-
 
 class AboutView(ListView):
     model = About
