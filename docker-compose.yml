@@ -2,6 +2,16 @@ version: '3.1'
 
 services:
 
+  nginx:
+    build: ./nginx
+    ports:
+      - 80:80
+    depends_on:
+      - web
+    volumes:
+      - ./static/:/code/static/
+      - ./media/:/code/media/
+
   db:
     image: postgres
     restart: always
@@ -9,10 +19,26 @@ services:
       - "5432:5432"
     volumes:
       - ./pgdb:/var/lib/postgresql/data
+    env_file: ./.env
+
+  web:
+    build: .
+    restart: "always"
+    command: gunicorn --bind 0.0.0.0 -p 8000 cyberkoch.wsgi
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/code/
+    depends_on:
+      - "db"
+    env_file: ./.env 
     environment:
-      POSTGRES_PASSWORD: 12345
-      POSTGRES_USER: db_user
-      POSTGRES_DB: db_name
+      - VIRTUAL_HOST=localhost,94.20.154.175
+      - VIRTUAL_PORT=8000
+      - HTTP_PORT=8000
+
+
+
 
 
   adminer:

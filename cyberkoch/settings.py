@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-_yr)n-3i(zlfs^6gztjhvx-c^3jgh=!xsmx)qduka#u+yg7ot)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False if os.environ.get('DEBUG') else True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -100,11 +100,11 @@ WSGI_APPLICATION = 'cyberkoch.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'db_name',
-        'USER': 'db_user',
-        'PASSWORD': '12345',
-        'HOST': 'localhost',
-        'PORT': 5432
+        'NAME': os.environ.get('POSTGRES_DB','db_name'),
+        'USER': os.environ.get('POSTGRES_USER','db_user'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD','12345'),
+        'HOST': os.environ.get('POSTGRES_HOST','localhost'),
+        'PORT': os.environ.get('POSTGRES_POST',5432)
     }
 }
 
@@ -187,9 +187,9 @@ MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
 
 if DEBUG:
-    STATICFILES_DIRS = [os.path.join(BASE_DIR,"static")]
+    STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
 else:
-    STATIC_ROOT = os.path.join(BASE_DIR,"static")
+    STATIC_ROOT = os.path.join(BASE_DIR,'static')
     
 MEDIA_ROOT = os.path.join(BASE_DIR,"media")
 
